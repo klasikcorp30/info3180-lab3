@@ -1,0 +1,53 @@
+{% extends "base.html" %}
+
+{% block main %}
+
+<div class="header">
+	<h1> Contact Form</h1>
+</div>
+
+<div class="warning text-center">
+	<h1>{{warning}}</h1>
+</div>
+
+    <form class="form-group" action="/contact" method="post" role="form">	
+			{{form.csrf_token}}
+        <p>
+          {{ form.name.label }} [Required]
+	     
+		</p>
+		<p> Please enter your full name</p>
+		<p>
+          {{ form.name }}
+        </p>
+        <p>
+          {{ form.email.label }} [Required]
+		</p>
+		<p> Please enter your email address</p>
+		<p>
+          {{ form.email }}	
+        </p>
+		<address>
+			{{form.address.label}} [Required]
+		</address>
+		<p> Please enter your address</p>
+		<p>
+			{{form.address}}
+		</p>
+		<p>
+			{{form.subject.label}} [Required]
+		</p>
+		<p> Please enter the subject of your message</p>
+		<p>
+			{{form.subject}}
+		</p>
+        <p>
+          {{ form.message.label }} [Required]
+		</p>
+		Please enter the meassage you would like to send
+		<p>
+          {{ form.message }}
+        </p>
+        <button class="btn btn-primary">Send</button>
+      </form>
+{% endblock %}
