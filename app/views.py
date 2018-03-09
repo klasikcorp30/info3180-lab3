@@ -28,12 +28,17 @@ def about():
 
 @app.route('/contact', methods=['GET', 'POST'])
 def contact():
-	form = ContactForm()
-	if request.method == 'POST':
-		return render_template('contact.html',form=form)
-	if request.method == 'GET':
-		if form.validate():
-			return render_template('home.html')
+    form = ContactForm()
+    if request.method == 'POST' and form.validate_on_submit():
+        msg = Message(form.subject.data,
+        sender = (form.name.data, form.email.data),
+        recipients = ['klasik.corp30@gmail.com'])
+        msg.body = form.body.data
+        mail.send(msg)
+        flash('Message was successfully sent')
+        return redirect(url_for('home'))
+    return render_template('contact.html', form=form)
+   
 
 
 ###

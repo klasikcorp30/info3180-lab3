@@ -10,7 +10,7 @@
 	<h1>{{warning}}</h1>
 </div>
 
-    <form class="form-group" action="/contact" method="post" role="form">	
+		<form class="form-group" action="{{url_for('contact')}}" method="post">	
 			{{form.csrf_token}}
         <p>
           {{ form.name.label }} [Required]
@@ -27,13 +27,6 @@
 		<p>
           {{ form.email }}	
         </p>
-		<address>
-			{{form.address.label}} [Required]
-		</address>
-		<p> Please enter your address</p>
-		<p>
-			{{form.address}}
-		</p>
 		<p>
 			{{form.subject.label}} [Required]
 		</p>
@@ -42,11 +35,11 @@
 			{{form.subject}}
 		</p>
         <p>
-          {{ form.message.label }} [Required]
+          {{ form.body.label }} [Required]
 		</p>
-		Please enter the meassage you would like to send
+		Please enter the meassage you would like to sends
 		<p>
-          {{ form.message }}
+          {{ form.body }}
         </p>
         <button class="btn btn-primary">Send</button>
       </form>
